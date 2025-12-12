@@ -3,7 +3,7 @@ function initMaterialize() {
   // Mobile sidenav initialisation
   const sideNaveElements = document.querySelectorAll(".sidenav");
   const sideNaveOptions = {
-    edge: "right", // opens from right
+    edge: "left", // opens from right
     inDuration: 250,
   };
   M.Sidenav.init(sideNaveElements, sideNaveOptions);
@@ -100,9 +100,3 @@ function initAfterDOMLoad() {
 }
 
 document.addEventListener("DOMContentLoaded", initAfterDOMLoad);
-
-// GitHub Calendar Initialization
-GitHubCalendar(".calendar", "malik-shaik-cos", {
-  responsive: true,
-  summary_text: "Contributions in the last year",
-});
