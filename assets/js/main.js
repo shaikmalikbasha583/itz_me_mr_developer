@@ -1,86 +1,92 @@
 // Initialize Materialize Components
 function initMaterialize() {
-  // Mobile sidenav initialisation
-  const sideNaveElements = document.querySelectorAll(".sidenav");
-  const sideNaveOptions = {
-    edge: "left", // opens from right
+  // Mobile sidenav initialization
+  const sideNavElements = document.querySelectorAll(".sidenav");
+  M.Sidenav.init(sideNavElements, {
+    edge: "left",
     inDuration: 250,
-  };
-  M.Sidenav.init(sideNaveElements, sideNaveOptions);
+  });
 
-  // Modal initialisation
+  // Dropdown initialization
+  var navDropDown = document.querySelectorAll(".dropdown-trigger");
+  M.Dropdown.init(navDropDown, {
+    coverTrigger: false, // dropdown appears below the trigger
+    constrainWidth: false, // allow width to fit content
+  });
+
+  // Modal initialization
   const modalElems = document.querySelectorAll(".modal");
-  const modalOptions = {
+  M.Modal.init(modalElems, {
     opacity: 0.9,
     inDuration: 300,
-  };
-  M.Modal.init(modalElems, modalOptions);
+  });
 
-  // Tabs initialisation
+  // Tabs initialization
   const tabElems = document.querySelectorAll(".tabs");
-  const tabOptions = {
+  M.Tabs.init(tabElems, {
     swipeable: true,
     duration: 200,
-  };
-  M.Tabs.init(tabElems, tabOptions);
+  });
 
-  // Carousel initialisation
-  var carouselElems = document.querySelectorAll(".carousel");
-  const carouselOptions = {
+  // Carousel initialization
+  const carouselElems = document.querySelectorAll(".carousel");
+  const carouselInstances = M.Carousel.init(carouselElems, {
     indicators: true,
     duration: 200,
-  };
+  });
 
-  carouselInstances = M.Carousel.init(carouselElems, carouselOptions);
+  // Guard: no carousel found
+  if (!carouselInstances || carouselInstances.length === 0) return;
+
+  const carouselInstance = carouselInstances[0];
+  const carouselElem = carouselElems[0];
 
   // Auto rotate
-  setInterval(() => {
-    instances[0].next();
+  let autoRotate = setInterval(() => {
+    carouselInstance.next();
   }, 3000);
 
-  let autoRotate = setInterval(() => instance.next(), 3000);
-
   // Pause on hover
-  elem.addEventListener("mouseenter", () => {
+  carouselElem.addEventListener("mouseenter", () => {
     clearInterval(autoRotate);
   });
 
   // Resume on leave
-  elem.addEventListener("mouseleave", () => {
-    autoRotate = setInterval(() => instance.next(), 3000);
+  carouselElem.addEventListener("mouseleave", () => {
+    autoRotate = setInterval(() => {
+      carouselInstance.next();
+    }, 3000);
   });
 }
 
 function animateText() {
-  // ================= Typing / Rotating Text Animation =================
   const phrases = [
-    "data-driven solutions",
-    "scalable data pipelines",
-    "intelligent APIs",
-    "cloud-native architectures",
-    "automated machine learning workflows",
-    "end-to-end analytics systems",
+    "data-driven solutions.",
+    "scalable data pipelines.",
+    "intelligent APIs.",
+    "cloud-native architectures.",
+    "automated machine learning workflows.",
+    "end-to-end analytics systems.",
   ];
 
   const animatedText = document.getElementById("animated-text");
+  if (!animatedText) return;
+
   let phraseIndex = 0;
   let letterIndex = 0;
-  let currentPhrase = "";
   let isDeleting = false;
 
   function typeEffect() {
-    currentPhrase = phrases[phraseIndex];
+    const currentPhrase = phrases[phraseIndex];
 
-    if (isDeleting) {
-      animatedText.textContent = currentPhrase.substring(0, letterIndex--);
-    } else {
-      animatedText.textContent = currentPhrase.substring(0, letterIndex++);
-    }
+    animatedText.textContent = isDeleting
+      ? currentPhrase.substring(0, letterIndex--)
+      : currentPhrase.substring(0, letterIndex++);
 
     let typingSpeed = isDeleting ? 60 : 100;
 
     if (!isDeleting && letterIndex === currentPhrase.length) {
-      typingSpeed = 1500; // pause at full text
+      typingSpeed = 1500;
       isDeleting = true;
     } else if (isDeleting && letterIndex === 0) {
       isDeleting = false;
