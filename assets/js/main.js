@@ -1,3 +1,20 @@
+const projectHighlights = [
+  "Automated ETL pipelines.",
+  "High-performance APIs.",
+  "Cloud-native analytics.",
+  "Real-time job support.",
+  "Data-driven dashboards.",
+];
+
+const phrases = [
+  "data-driven solutions.",
+  "scalable data pipelines.",
+  "intelligent APIs.",
+  "cloud-native architectures.",
+  "automated machine learning workflows.",
+  "end-to-end analytics systems.",
+];
+
 // Initialize Materialize Components
 function initMaterialize() {
   // Mobile sidenav initialization
@@ -59,17 +76,8 @@ function initMaterialize() {
   });
 }
 
-function animateText() {
-  const phrases = [
-    "data-driven solutions.",
-    "scalable data pipelines.",
-    "intelligent APIs.",
-    "cloud-native architectures.",
-    "automated machine learning workflows.",
-    "end-to-end analytics systems.",
-  ];
-
-  const animatedText = document.getElementById("animated-text");
+function animateText(phrases, targetId) {
+  const animatedText = document.getElementById(targetId);
   if (!animatedText) return;
 
   let phraseIndex = 0;
@@ -96,13 +104,14 @@ function animateText() {
 
     setTimeout(typeEffect, typingSpeed);
   }
-
   typeEffect();
 }
 
 function initAfterDOMLoad() {
   initMaterialize();
-  animateText();
+  animateText(phrases, "animated-text");
+  animateText(projectHighlights, "dynamic-project-text");
+  animateProjects();
 }
 
 document.addEventListener("DOMContentLoaded", initAfterDOMLoad);

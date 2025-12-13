@@ -10,11 +10,14 @@
 
 #home-section,
 #about,
-#skills,
-#experience,
+#services,
+#job-support,
+#how-it-works,
+#tech-stack,
 #projects,
-#certifications {
-  scroll-margin-top: 80px;
+#certifications,
+#contact {
+  scroll-margin-top: 65px;
 }
 
 /* ================= HEADER STYLES ================= */
