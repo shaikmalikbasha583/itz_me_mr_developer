@@ -111,7 +111,6 @@ function initAfterDOMLoad() {
   initMaterialize();
   animateText(phrases, "animated-text");
   animateText(projectHighlights, "dynamic-project-text");
-  animateProjects();
 }
 
 document.addEventListener("DOMContentLoaded", initAfterDOMLoad);

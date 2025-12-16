@@ -7,6 +7,13 @@
   margin-top: 7px; /* small vertical alignment fix */
   margin-left: 12px; /* spacing from left edge */
 }
+.about-me-img {
+  margin-top: 65px;
+  height: 180px; /* set desired height */
+  width: 180px; /* set desired width */
+  border-radius: 50%; /* makes it circular */
+  object-fit: cover; /* ensures proper cropping */
+}
 
 #home-section,
 #about,
@@ -95,6 +102,9 @@ nav ul li a {
 /* 2. Media Query for Mobile View */
 /* This CSS will only apply when the screen width is 600px or less */
 @media screen and (max-width: 600px) {
+  .about-me-img {
+    margin-top: 0px;
+  }
   .hero-name {
     /* Reduce the size for mobile screens */
     font-size: 2.5rem; /* Change this value to fit your needs */
