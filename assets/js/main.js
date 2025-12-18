@@ -107,10 +107,19 @@ function animateText(phrases, targetId) {
   typeEffect();
 }
 
+function loadTags() {
+  fetch("icons.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("icons-list").innerHTML = data;
+    });
+}
+
 function initAfterDOMLoad() {
   initMaterialize();
   animateText(phrases, "animated-text");
   animateText(projectHighlights, "dynamic-project-text");
+  loadTags();
 }
 
 document.addEventListener("DOMContentLoaded", initAfterDOMLoad);
