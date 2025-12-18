@@ -112,6 +112,7 @@ function loadTags() {
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("icons-list").innerHTML = data;
+      document.getElementById("icons-list-repeat").innerHTML = data;
     });
 }
 
