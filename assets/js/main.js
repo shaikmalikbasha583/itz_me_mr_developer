@@ -108,7 +108,14 @@ function animateText(phrases, targetId) {
 }
 
 function loadTags() {
-  fetch("icons.html")
+  let icons_url = "icons.html";
+
+  if (window.location.protocol === "file:") {
+    icons_url =
+      "https://shaikmalikbasha583.github.io/itz_me_mr_developer/icons.html";
+  }
+
+  fetch(icons_url)
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("icons-list").innerHTML = data;
