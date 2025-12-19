@@ -111,6 +111,8 @@ nav ul li a {
 .icon-marquee {
   overflow: hidden;
   width: 100%;
+  /* Prevents mobile blue highlight tap effect */
+  -webkit-tap-highlight-color: transparent;
 }
 .icon-track {
   display: flex;
@@ -119,13 +121,38 @@ nav ul li a {
   width: max-content;
   animation: scroll-code-icon 12s linear infinite;
 }
-.icon-marquee:hover .icon-track {
+.icon-marquee:active .icon-track {
   animation-play-state: paused;
+}
+
+/* Floating Telegram Button */
+.telegram-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+}
+
+.dm-icons {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+@media (hover: hover) {
+  .icon-marquee:hover .icon-track {
+    animation-play-state: paused;
+  }
 }
 
 /* 2. Media Query for Mobile View */
 /* This CSS will only apply when the screen width is 600px or less */
 @media screen and (max-width: 600px) {
+  .dm-icons {
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 15px;
+  }
   .about-me-img {
     margin-top: 0px;
   }
