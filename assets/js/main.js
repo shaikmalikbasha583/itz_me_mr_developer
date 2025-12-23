@@ -49,6 +49,7 @@ function initMaterialize() {
   const carouselElems = document.querySelectorAll(".carousel");
   const carouselInstances = M.Carousel.init(carouselElems, {
     indicators: true,
+    fullWidth: true,
     duration: 200,
   });
 
@@ -123,11 +124,31 @@ function loadTags() {
     });
 }
 
+function goToTop() {
+  const goTopBtn = document.getElementById("goTopBtn");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 300) {
+      goTopBtn.classList.add("show");
+    } else {
+      goTopBtn.classList.remove("show");
+    }
+  });
+
+  goTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
 function initAfterDOMLoad() {
   initMaterialize();
   animateText(phrases, "animated-text");
   animateText(projectHighlights, "dynamic-project-text");
   loadTags();
+  goToTop();
 }
 
 document.addEventListener("DOMContentLoaded", initAfterDOMLoad);

@@ -132,6 +132,25 @@ nav ul li a {
   right: 25px;
   z-index: 999;
 }
+/* Go To Top Button */
+.go-top-btn {
+  position: fixed;
+  bottom: 95px; /* above telegram button */
+  right: 25px;
+  z-index: 999;
+
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+/* Visible State */
+.go-top-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 
 .dm-icons {
   margin-left: 5px;
