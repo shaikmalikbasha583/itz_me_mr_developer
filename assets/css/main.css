@@ -1,4 +1,8 @@
 /* ================= LOGO IMAGE ================= */
+.h-title {
+  font-size: 30px;
+  font-weight: bold;
+}
 .logo-img {
   height: 50px; /* recommended height for good balance */
   width: 50px; /* keep square ratio */
@@ -170,7 +174,7 @@ nav ul li a {
   .dm-icons {
     margin-left: 2px;
     margin-right: 2px;
-    font-size: 15px;
+    font-size: 18px;
   }
   .about-me-img {
     margin-top: 0px;
