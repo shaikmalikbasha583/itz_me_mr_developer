@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shaikmalikbasha583.github.io/itz_me_mr_developer/sitemap.xml
