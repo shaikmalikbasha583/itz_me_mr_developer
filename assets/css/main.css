@@ -1,3 +1,13 @@
+.padding-5 {
+  padding: 5px;
+}
+.padding-10 {
+  padding: 10px;
+}
+.text-justify {
+  text-align: justify;
+}
+
 /* ================= LOGO IMAGE ================= */
 .h-title {
   font-size: 30px;
@@ -172,8 +182,8 @@ nav ul li a {
 /* This CSS will only apply when the screen width is 600px or less */
 @media screen and (max-width: 600px) {
   .dm-icons {
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
     font-size: 18px;
   }
   .about-me-img {
