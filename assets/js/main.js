@@ -143,6 +143,34 @@ function goToTop() {
   });
 }
 
+function shareAndCopy() {
+  const pageUrl = window.location.href;
+
+  // Always copy first
+  navigator.clipboard
+    .writeText(pageUrl)
+    .then(() => {
+      M.toast({
+        html: "🔗 Link copied to clipboard!",
+        classes: "green darken-2",
+      });
+    })
+    .catch(() => {
+      M.toast({ html: "Unable to copy link", classes: "red darken-2" });
+    });
+
+  // Then try native share (if supported)
+  if (navigator.share) {
+    navigator
+      .share({
+        title: document.title,
+        text: "Check out this page:",
+        url: pageUrl,
+      })
+      .catch((error) => console.log("Share cancelled or failed:", error));
+  }
+}
+
 function initAfterDOMLoad() {
   initMaterialize();
   animateText(phrases, "animated-text");
